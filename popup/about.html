@@ -11,10 +11,23 @@
         --text-primary: #202124;
         --text-secondary: #5f6368;
         --accent-color: #1a73e8;
+        --accent-hover: #1557b0;
         --border-color: #dadce0;
-        --warning-bg: rgba(242, 139, 130, 0.08);
-        --warning-border: #f28b82;
-        --warning-text: #c5221f;
+        --divider-color: #f1f3f4;
+        --code-bg: #eef2f6;
+
+        --badge-safe-bg: rgba(15, 157, 88, 0.12);
+        --badge-safe-text: #0d8043;
+        --badge-warn-bg: rgba(217, 48, 37, 0.12);
+        --badge-warn-text: #c5221f;
+        --badge-wht-bg: rgba(26, 115, 232, 0.12);
+        --badge-wht-text: #1765c1;
+        --badge-gray-bg: rgba(128, 128, 128, 0.12);
+        --badge-gray-text: #5f6368;
+
+        --warning-box-bg: rgba(242, 139, 130, 0.09);
+        --warning-box-border: #f28b82;
+        --warning-box-text: #b31412;
       }
 
       @media (prefers-color-scheme: dark) {
@@ -24,11 +37,28 @@
           --text-primary: #e8eaed;
           --text-secondary: #9aa0a6;
           --accent-color: #8ab4f8;
+          --accent-hover: #aecbfa;
           --border-color: #3c4043;
-          --warning-bg: rgba(242, 139, 130, 0.12);
-          --warning-border: #d93025;
-          --warning-text: #f28b82;
+          --divider-color: #2d2f31;
+          --code-bg: #2d3139;
+
+          --badge-safe-bg: rgba(129, 201, 149, 0.18);
+          --badge-safe-text: #81c995;
+          --badge-warn-bg: rgba(242, 139, 130, 0.18);
+          --badge-warn-text: #f28b82;
+          --badge-wht-bg: rgba(138, 180, 248, 0.18);
+          --badge-wht-text: #8ab4f8;
+          --badge-gray-bg: rgba(154, 160, 166, 0.18);
+          --badge-gray-text: #9aa0a6;
+
+          --warning-box-bg: rgba(242, 139, 130, 0.12);
+          --warning-box-border: #d93025;
+          --warning-box-text: #f6aea9;
         }
+      }
+
+      * {
+        box-sizing: border-box;
       }
 
       body {
@@ -36,54 +66,81 @@
         padding: 40px 20px;
         background-color: var(--bg-color);
         color: var(--text-primary);
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        line-height: 1.6;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.65;
+        font-size: 14.5px;
       }
 
       .container {
-        max-width: 560px;
+        max-width: 660px;
         margin: 0 auto;
         background: var(--card-bg);
         border: 1px solid var(--border-color);
-        border-radius: 16px;
-        padding: 32px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        border-radius: 20px;
+        padding: 40px 36px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
       }
 
       .header {
         display: flex;
         align-items: center;
-        gap: 16px;
-        border-bottom: 1px solid var(--border-color);
-        padding-bottom: 20px;
-        margin-bottom: 24px;
+        gap: 18px;
+        border-bottom: 1px solid var(--divider-color);
+        padding-bottom: 24px;
+        margin-bottom: 28px;
       }
 
       .logo {
-        width: 48px;
-        height: 48px;
-        border-radius: 10px;
+        width: 54px;
+        height: 54px;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
 
-      h1 {
-        font-size: 22px;
-        font-weight: 600;
+      .header-meta h1 {
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: -0.3px;
         margin: 0;
+        color: var(--text-primary);
+      }
+
+      .subtitle {
+        margin: 4px 0 0 0;
+        font-size: 13px;
+        color: var(--text-secondary);
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .version-tag {
+        background: var(--code-bg);
+        color: var(--text-primary);
+        padding: 2px 8px;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 11.5px;
       }
 
       h2 {
-        font-size: 14px;
-        font-weight: 600;
-        margin: 28px 0 12px 0;
+        font-size: 13.5px;
+        font-weight: 700;
+        margin: 32px 0 14px 0;
         text-transform: uppercase;
-        letter-spacing: 0.8px;
-        color: var(--text-secondary);
-        border-left: 3px solid var(--accent-color);
-        padding-left: 10px;
+        letter-spacing: 1px;
+        color: var(--accent-color);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      h2 svg {
+        width: 16px;
+        height: 16px;
       }
 
       p {
-        font-size: 14px;
         margin: 0 0 16px 0;
         color: var(--text-primary);
       }
@@ -92,75 +149,230 @@
         color: var(--accent-color);
         text-decoration: none;
         font-weight: 500;
+        transition: color 0.15s ease;
       }
 
       a:hover {
         text-decoration: underline;
+        color: var(--accent-hover);
       }
 
-      ol {
-        margin: 0 0 20px 0;
-        padding-left: 20px;
-        font-size: 14px;
-      }
-
-      li {
-        margin-bottom: 8px;
+      code {
+        font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+        font-size: 12.5px;
+        background-color: var(--code-bg);
+        padding: 2px 6px;
+        border-radius: 4px;
+        color: var(--text-primary);
       }
 
       /* Disclaimer Alert Box */
       .disclaimer-box {
-        background-color: var(--warning-bg);
-        border: 1px solid var(--warning-border);
-        border-radius: 12px;
-        padding: 16px;
-        margin-bottom: 24px;
-        font-size: 13.5px;
+        background-color: var(--warning-box-bg);
+        border: 1px solid var(--warning-box-border);
+        border-radius: 14px;
+        padding: 18px 20px;
+        margin-bottom: 26px;
       }
 
       .disclaimer-title {
-        font-weight: 600;
-        color: var(--warning-text);
+        font-weight: 700;
+        color: var(--warning-box-text);
         margin-bottom: 6px;
         display: flex;
         align-items: center;
-        gap: 6px;
+        gap: 8px;
+        font-size: 14px;
       }
 
       .disclaimer-text {
         margin: 0;
+        font-size: 13.5px;
+        line-height: 1.55;
         color: var(--text-primary);
       }
 
-      .info-card {
+      /* Grid of features */
+      .features-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        margin: 18px 0 24px 0;
+      }
+
+      @media (max-width: 580px) {
+        .features-grid {
+          grid-template-columns: 1fr;
+        }
+        .container {
+          padding: 24px 18px;
+        }
+      }
+
+      .feature-card {
         background: var(--bg-color);
         border: 1px solid var(--border-color);
         border-radius: 12px;
         padding: 16px;
-        margin-top: 16px;
+      }
+
+      .feature-title {
+        font-size: 13.5px;
+        font-weight: 600;
+        margin-bottom: 6px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--text-primary);
+      }
+
+      .feature-title svg {
+        width: 16px;
+        height: 16px;
+        color: var(--accent-color);
+        flex-shrink: 0;
+      }
+
+      .feature-desc {
+        font-size: 12.5px;
+        margin: 0;
+        color: var(--text-secondary);
+        line-height: 1.5;
+      }
+
+      /* Badge Legend */
+      .badge-legend {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin: 16px 0 24px 0;
+      }
+
+      .badge-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 13px;
+        background: var(--bg-color);
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        padding: 8px 14px;
+      }
+
+      .badge-pill {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 44px;
+        padding: 2px 8px;
+        border-radius: 6px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+
+      .badge-pill.safe {
+        background-color: var(--badge-safe-bg);
+        color: var(--badge-safe-text);
+      }
+
+      .badge-pill.warning {
+        background-color: var(--badge-warn-bg);
+        color: var(--badge-warn-text);
+      }
+
+      .badge-pill.whitelist {
+        background-color: var(--badge-wht-bg);
+        color: var(--badge-wht-text);
+      }
+
+      .badge-pill.error {
+        background-color: var(--badge-gray-bg);
+        color: var(--badge-gray-text);
+      }
+
+      .badge-info {
+        color: var(--text-primary);
+      }
+
+      .badge-sub {
+        color: var(--text-secondary);
+        font-size: 12px;
+        display: block;
+      }
+
+      /* Quote card */
+      .quote-card {
+        background: var(--bg-color);
+        border-left: 4px solid var(--accent-color);
+        border-radius: 0 12px 12px 0;
+        padding: 16px 20px;
+        margin: 18px 0;
+      }
+
+      .quote-text {
+        font-style: italic;
+        font-size: 13.5px;
+        line-height: 1.6;
+        color: var(--text-secondary);
+        margin: 0;
+      }
+
+      .quote-author {
+        margin-top: 8px;
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--text-primary);
+        text-align: right;
+      }
+
+      /* Changelog list */
+      .changelog-list {
+        margin: 0 0 20px 0;
+        padding-left: 20px;
+        font-size: 13.5px;
+      }
+
+      .changelog-list li {
+        margin-bottom: 8px;
       }
 
       .footer {
-        margin-top: 32px;
-        padding-top: 20px;
-        border-top: 1px solid var(--border-color);
-        text-align: center;
-        font-size: 13px;
+        margin-top: 36px;
+        padding-top: 24px;
+        border-top: 1px solid var(--divider-color);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        font-size: 12.5px;
         color: var(--text-secondary);
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 14px;
       }
     </style>
   </head>
   <body>
     <div class="container">
+      
+      <!-- Header -->
       <header class="header">
         <img src="../icons/icon48.png" alt="Iffy‑Checker Logo" class="logo" />
-        <div>
+        <div class="header-meta">
           <h1>Iffy‑Checker</h1>
-          <p style="margin: 4px 0 0 0; font-size: 13px; color: var(--text-secondary);">Verzija 1.0.0 • Autor: Matija Gračanin</p>
+          <p class="subtitle">
+            <span class="version-tag">v1.0.0</span>
+            <span>Zaštita od lažnih internetskih trgovina</span>
+          </p>
         </div>
       </header>
 
-      <!-- Disclaimer Alert Box -->
+      <!-- Legal Disclaimer -->
       <div class="disclaimer-box">
         <div class="disclaimer-title">
           <svg style="width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2;" viewBox="0 0 24 24">
@@ -168,51 +380,178 @@
             <line x1="12" y1="9" x2="12" y2="13"/>
             <line x1="12" y1="17" x2="12.01" y2="17"/>
           </svg>
-          Važna napomena (Odricanje odgovornosti)
+          Važna pravna napomena (Odricanje odgovornosti)
         </div>
         <p class="disclaimer-text">
-          Ovo proširenje je <strong>neslužbeni projekt</strong>. Autor proširenja (<strong>Matija Gračanin</strong>) nije povezan s CARNET-om niti s Nacionalnim CERT-om. 
-          Dodatak je razvijen kako bi se korisnicima olakšala i potpuno automatizirala provjera web stranica tijekom pregledavanja oslanjajući se na servis CERT iffy.
+          Ovo proširenje je <strong>nezavisan projekt otvorenog koda</strong>. Autor proširenja (<strong>Matija Gračanin</strong>) nije službeno povezan s CARNET-om niti s Nacionalnim CERT-om. 
+          Dodatak je razvijen pro bono kako bi građanima i potrošačima omogućio bržu, automatiziranu i jednostavnu provjeru web trgovina u stvarnom vremenu oslanjajući se na javno dostupan servis CERT iffy.
         </p>
       </div>
 
+      <!-- Overview -->
+      <h2>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="16" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
+        O projektu
+      </h2>
       <p>
-        <strong>Iffy‑Checker</strong> je proširenje otvorenog koda za preglednik Google Chrome (i druge Chromium preglednike) koje omogućuje automatsku 
-        provjeru je li otvorena web stranica zapravo lažna internetska trgovina pretražujući servis CERT iffy.
+        <strong>Iffy‑Checker</strong> je lagano i sigurno proširenje za preglednike temeljene na Chromiumu (Google Chrome, Brave, Microsoft Edge, Opera). 
+        Tijekom pretraživanja weba automatski analizira domene posjećenih stranica te uspoređuje njihovu reputaciju s bazom podataka Nacionalnog CERT-a, 
+        upozoravajući korisnike prije nego unesu osjetljive podatke ili podatke s bankovnih kartica na lažnim trgovinama.
       </p>
 
-      <h2>Kako funkcionira</h2>
-      <ol>
-        <li><strong>Automatska pozadinska provjera</strong>: Tijekom surfanja proširenje šalje domenu aktivne web stranice na provjeru.</li>
-        <li><strong>Brza signalizacija (Badge)</strong>: Ikona proširenja u kutu preglednika mijenja boju kako bi upozorila (zeleno <strong>OK</strong> za provjerene/sigurne stranice, crveno <strong>WRN</strong> za sumnjive trgovine).</li>
-        <li><strong>Jednostavno upravljanje</strong>: Otvaranjem skočnog prozora proširenja (popup), moguće je ručno testirati bilo koju domenu, dodati povjerljive adrese na popis dopuštenih (Whitelist) ili pratiti statistiku.</li>
-      </ol>
+      <!-- Key Capabilities -->
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22C17.5 19.1 19 14.5 19 9.5V5L12 2L5 5V9.5C5 14.5 6.5 19.1 12 22Z"/>
+            </svg>
+            Automatska pozadinska zaštita
+          </div>
+          <p class="feature-desc">
+            Tiho skenira aktivne web adrese tijekom surfanja bez ometanja i trenutno signalizira status na ikoni preglednika.
+          </p>
+        </div>
 
-      <h2>O CERT Iffy servisu</h2>
+        <div class="feature-card">
+          <div class="feature-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+            Popis pouzdanih domena (Whitelist)
+          </div>
+          <p class="feature-desc">
+            Jednim klikom možete označiti omiljene provjerene trgovine i banke kao povjerljive, uz automatsku sinkronizaciju poddomena.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            Ručna provjera i desni klik
+          </div>
+          <p class="feature-desc">
+            Testirajte bilo koji link ili domenu prije nego je uopće otvorite putem skočnog izbornika ili desnim klikom miša.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+            Lokalna povijest i statistika
+          </div>
+          <p class="feature-desc">
+            Pratite broj pregledanih i provjerenih adresa. Svi podaci spremaju se isključivo lokalno na vašem uređaju.
+          </p>
+        </div>
+      </div>
+
+      <!-- Badge Indicators Legend -->
+      <h2>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+          <line x1="7" y1="7" x2="7.01" y2="7"/>
+        </svg>
+        Značenje oznaka (Badge statusi)
+      </h2>
+      <div class="badge-legend">
+        <div class="badge-row">
+          <span class="badge-pill safe">OK</span>
+          <div class="badge-info">
+            <strong>Sigurna stranica</strong>
+            <span class="badge-sub">Domena nije identificirana kao lažna internetska trgovina u bazi CERT iffy.</span>
+          </div>
+        </div>
+
+        <div class="badge-row">
+          <span class="badge-pill warning">WRN</span>
+          <div class="badge-info">
+            <strong>Upozorenje: Lažna ili sumnjiva trgovina!</strong>
+            <span class="badge-sub">Domena se nalazi na popisu opasnih ili prevarantskih trgovina. Izbjegavajte unos osobnih i kartičnih podataka.</span>
+          </div>
+        </div>
+
+        <div class="badge-row">
+          <span class="badge-pill whitelist">WHT</span>
+          <div class="badge-info">
+            <strong>Dopuštena domena</strong>
+            <span class="badge-sub">Domena se nalazi na vašem korisničkom popisu povjerljivih adresa.</span>
+          </div>
+        </div>
+
+        <div class="badge-row">
+          <span class="badge-pill error">ERR</span>
+          <div class="badge-info">
+            <strong>Pogreška ili nedostupan poslužitelj</strong>
+            <span class="badge-sub">Došlo je do privremenog problema pri povezivanju sa servisom ili je upisan nevažeći URL.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- About CERT iffy Service -->
+      <h2>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+        </svg>
+        O Nacionalnom CERT-u i servisu CERT iffy
+      </h2>
       <p>
-        Za dohvat podataka o sigurnosti trgovina proširenje koristi se javni servis 
+        Za pouzdanu provjeru vjerodostojnosti trgovina proširenje se oslanja na podatke javnog servisa 
         <a href="https://iffy.cert.hr/" target="_blank" rel="noopener">iffy.cert.hr</a>.
       </p>
       
-      <div class="info-card">
-        <p style="font-style: italic; font-size: 13.5px; margin: 0; color: var(--text-secondary);">
-          "CERT iffy je servis za provjeru internetskih trgovina koji je razvio CARNET-ov sektor Nacionalni CERT. 
+      <div class="quote-card">
+        <p class="quote-text">
+          "CERT iffy je servis za provjeru internetskih trgovina koji je razvio CARNET-ov sektor Nacionalni CERT.
           U sklopu vlastitog istraživanja, Nacionalni CERT je ustanovio da postoji više od 6000 lažnih internetskih trgovina koje ciljaju građane Republike Hrvatske. 
-          Lažne internetske trgovine najčešće imitiraju poznate modne brendove, a kreirane su s ciljem krađe osobnih podataka i novca građana. 
-          Iz razloga što građani učestalo prijavljuju lažne internetske trgovine, CARNET-ov sektor Nacionalni CERT odlučio je napraviti CERT iffy, servis pomoću kojeg građani mogu jednostavno provjeriti internetsku trgovinu prije nego naruče proizvod putem iste."
+          Lažne internetske trgovine najčešće imitiraju poznate modne brendove, a kreirane su s ciljem krađe osobnih podataka i novca građana. 
+          CERT iffy omogućuje građanima jednostavnu provjeru trgovine prije nego naruče proizvod putem iste."
         </p>
+        <div class="quote-author">— CARNET, Nacionalni CERT</div>
       </div>
 
-      <h2>Privatnost podataka</h2>
+      <!-- Privacy & Architecture -->
+      <h2>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+        Privatnost podataka i sigurnost
+      </h2>
       <p>
-        Privatnost podataka je prioritet. Proširenje šalje isključivo nazive domena (npr. <code>google.com</code>) izravno na poslužitelj https://iffy.cert.hr/
-        radi provjere statusa. Ne prikupljaju se niti spremaju bilo kakvi osobni podaci, kolačići ili povijest pretraživanja.
-        Izvorni kod je u potpunosti dostupan za pregled na <a href="https://github.com/mgracanin/iffy-checker" target="_blank" rel="noopener">GitHubu</a>.
+        Vaša privatnost je apsolutni prioritet u dizajnu proširenja:
       </p>
+      <ul class="changelog-list">
+        <li><strong>Zaštita privatnosti URL-ova:</strong> Proširenje na provjeru šalje <em>isključivo</em> naziv domene (npr. <code>trgovina.hr</code>). Putanje podstranica, parametri pretraživanja, osobni identifikatori i tokeni sesija se uklanjaju i nikada ne napuštaju vaše računalo.</li>
+        <li><strong>Nema praćenja:</strong> Ne prikupljaju se niti prenose nikakvi osobni podaci, kolačići preglednika, IP adrese ili analitika trećih strana.</li>
+        <li><strong>Pametno predmemoriranje:</strong> Kako bi se smanjio mrežni promet i sačuvali poslužitelji CERT-a, rezultati provjere čuvaju se u privremenoj radnoj memoriji 10 minuta.</li>
+        <li><strong>Minimalne dozvole (Manifest V3):</strong> Proširenje zahtijeva isključivo osnovne dozvole preglednika (<code>tabs</code>, <code>storage</code>, <code>contextMenus</code>) potrebne za detekciju adrese i prikaz statusa.</li>
+      </ul>
 
-      <div class="footer">
-        Made by <a href="mailto:matijag@gmail.com">Matija Gračanin</a> • Sigurniji web za sve.
-      </div>
+      <!-- Footer -->
+      <footer class="footer">
+        <div>
+          Razvio <a href="mailto:matijag@gmail.com">Matija Gračanin</a> • Za sigurniji internet.
+        </div>
+        <div class="footer-links">
+          <a href="https://github.com/mgracanin/iffy-checker" target="_blank" rel="noopener">GitHub Repozitorij</a>
+          <span>•</span>
+          <a href="https://iffy.cert.hr/" target="_blank" rel="noopener">iffy.cert.hr</a>
+          <span>•</span>
+          <a href="https://www.cert.hr/" target="_blank" rel="noopener">Nacionalni CERT</a>
+        </div>
+      </footer>
+
     </div>
   </body>
 </html>
