@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iffy‑Checker</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <!-- Top Header -->
+    <header class="header">
+      <div class="logo-area">
+        <img src="../icons/icon48.png" alt="Logo" class="logo-img" />
+        <div>
+          <h1 class="logo-title">Iffy‑Checker</h1>
+          <span class="logo-subtitle">CERT iffy servis</span>
+        </div>
+      </div>
+      <div class="protection-status-badge active" id="protectionStatusBadge">
+        <span class="status-dot"></span>
+        <span class="status-text">Zaštita aktivna</span>
+      </div>
+    </header>
+
+    <!-- Main Content Tabs -->
+    <main class="content-container">
+      
+      <!-- Tab 1: Safety Dashboard -->
+      <section id="tab-safety" class="tab-panel active">
+        <!-- Shield Card -->
+        <div class="shield-card" id="shieldCard">
+          <div class="shield-wrapper">
+            <!-- Shield SVG -->
+            <svg class="shield-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 22C17.5 19.1 19 14.5 19 9.5V5L12 2L5 5V9.5C5 14.5 6.5 19.1 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="shield-icon-overlay" id="shieldOverlay">
+              <!-- Inline Check/Warn symbols inside JS -->
+            </div>
+          </div>
+          <h2 class="status-verdict" id="statusVerdict">Provjera u tijeku...</h2>
+          <p class="status-domain" id="statusDomain">učitavanje...</p>
+          <p class="status-description" id="statusDescription">Provjera domene u bazi podataka servisa CERTiffy...</p>
+          
+          <div class="action-row" id="safetyActionRow" style="display: none;">
+            <button class="btn btn-secondary btn-sm" id="btnWhitelistCurrent">
+              <!-- Star icon -->
+              <svg viewBox="0 0 24 24" class="btn-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+              </svg>
+              <span>Vjeruj ovoj domeni</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Manual URL Check Form -->
+        <div class="manual-check-container">
+          <h3 class="section-title">Ručna provjera domene</h3>
+          <form class="search-box" id="manualCheckForm">
+            <input type="text" id="manualCheckInput" placeholder="Npr. google.com, sumnjiva-stranica.hr" autocomplete="off" aria-label="Domena za provjeru" />
+            <button type="submit" class="btn btn-primary" id="btnManualCheck">Provjeri</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- Tab 2: Activity History -->
+      <section id="tab-history" class="tab-panel">
+        <div class="panel-header">
+          <h3 class="section-title">Povijest provjera</h3>
+          <button class="btn btn-text btn-sm" id="btnClearHistory">Očisti povijest</button>
+        </div>
+        <div class="history-list-wrapper">
+          <ul class="history-list" id="historyList">
+            <!-- Dynamically populated -->
+          </ul>
+          <div class="empty-state" id="historyEmptyState">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <p>Nema nedavnih provjera</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tab 3: Settings & Stats -->
+      <section id="tab-settings" class="tab-panel">
+        <!-- Protection Switch Control -->
+        <div class="settings-row card-row">
+          <div class="settings-text">
+            <h4 class="settings-label">Automatska zaštita</h4>
+            <p class="settings-desc">Provjeravaj stranice u pozadini tijekom pregledavanja.</p>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="toggleProtection" checked />
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <!-- Session Stats Dashboard -->
+        <div class="stats-dashboard">
+          <h4 class="section-title">Statistika sesije</h4>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <span class="stat-value" id="statScanned">0</span>
+              <span class="stat-label">Skenirano</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-value stat-green" id="statSafe">0</span>
+              <span class="stat-label">Sigurno</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-value stat-red" id="statWarnings">0</span>
+              <span class="stat-label">Upozorenja</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Whitelist Management -->
+        <div class="whitelist-section">
+          <div class="panel-header">
+            <h4 class="section-title">Popis dopuštenih domena</h4>
+          </div>
+          <form class="search-box add-whitelist-box" id="whitelistAddForm">
+            <input type="text" id="whitelistAddInput" placeholder="Dodaj domenu (npr. banka.hr)" autocomplete="off" aria-label="Domena za dodavanje na popis dopuštenih" />
+            <button type="submit" class="btn btn-secondary btn-icon-only" aria-label="Dodaj domenu">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </button>
+          </form>
+          <div class="whitelist-list-wrapper">
+            <ul class="whitelist-list" id="whitelistList">
+              <!-- Dynamically populated -->
+            </ul>
+            <div class="empty-state" id="whitelistEmptyState">
+              <p>Popis dopuštenih domena je prazan</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- About & Privacy Link -->
+        <div class="settings-row card-row" style="margin-top: 16px; cursor: pointer;" id="rowAbout">
+          <div class="settings-text">
+            <h4 class="settings-label" style="display: flex; align-items: center; gap: 6px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px;">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+              O proširenju &amp; privatnost
+            </h4>
+            <p class="settings-desc">Saznajte više informacija o projektu.</p>
+          </div>
+          <div style="color: var(--text-secondary); display: flex; align-items: center;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Bottom Navigation Bar -->
+    <nav class="nav-bar">
+      <button class="nav-btn active" data-tab="tab-safety">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22C17.5 19.1 19 14.5 19 9.5V5L12 2L5 5V9.5C5 14.5 6.5 19.1 12 22Z"/>
+        </svg>
+        <span>Zaštita</span>
+      </button>
+      <button class="nav-btn" data-tab="tab-history">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12 6 12 12 16 14"/>
+        </svg>
+        <span>Povijest</span>
+      </button>
+      <button class="nav-btn" data-tab="tab-settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+        <span>Postavke</span>
+      </button>
+    </nav>
+    <script src="popup.js"></script>
+  </body>
+</html>

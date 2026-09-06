@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Iffy‑Checker",
+  "description": "Check any URL against CERT‑HR’s Iffy database with one click.",
+  "version": "1.0.0",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Check with Iffy",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "permissions": [
+    "contextMenus",
+    "tabs",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://iffy.cert.hr/*"
+  ],
+  "options_ui": {
+    "page": "popup/about.html",
+    "open_in_tab": true
+  },
+  "background": {
+    "service_worker": "service_worker.js"
+  }
+}

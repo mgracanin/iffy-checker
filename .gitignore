@@ -1,0 +1,15 @@
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Development notes & temporary files
+resume-agy-iffy*.txt
+*.log
+*.tmp
+cookies.txt
+payload.json
+
+# IDE & Editor folders
+.vscode/
+.idea/

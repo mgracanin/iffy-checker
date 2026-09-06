@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="hr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>O projektu – Iffy‑Checker</title>
+    <style>
+      :root {
+        --bg-color: #f8f9fa;
+        --card-bg: #ffffff;
+        --text-primary: #202124;
+        --text-secondary: #5f6368;
+        --accent-color: #1a73e8;
+        --border-color: #dadce0;
+        --warning-bg: rgba(242, 139, 130, 0.08);
+        --warning-border: #f28b82;
+        --warning-text: #c5221f;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg-color: #121212;
+          --card-bg: #1e1e1e;
+          --text-primary: #e8eaed;
+          --text-secondary: #9aa0a6;
+          --accent-color: #8ab4f8;
+          --border-color: #3c4043;
+          --warning-bg: rgba(242, 139, 130, 0.12);
+          --warning-border: #d93025;
+          --warning-text: #f28b82;
+        }
+      }
+
+      body {
+        margin: 0;
+        padding: 40px 20px;
+        background-color: var(--bg-color);
+        color: var(--text-primary);
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 560px;
+        margin: 0 auto;
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        padding: 32px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      }
+
+      .header {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 20px;
+        margin-bottom: 24px;
+      }
+
+      .logo {
+        width: 48px;
+        height: 48px;
+        border-radius: 10px;
+      }
+
+      h1 {
+        font-size: 22px;
+        font-weight: 600;
+        margin: 0;
+      }
+
+      h2 {
+        font-size: 14px;
+        font-weight: 600;
+        margin: 28px 0 12px 0;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        color: var(--text-secondary);
+        border-left: 3px solid var(--accent-color);
+        padding-left: 10px;
+      }
+
+      p {
+        font-size: 14px;
+        margin: 0 0 16px 0;
+        color: var(--text-primary);
+      }
+
+      a {
+        color: var(--accent-color);
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      ol {
+        margin: 0 0 20px 0;
+        padding-left: 20px;
+        font-size: 14px;
+      }
+
+      li {
+        margin-bottom: 8px;
+      }
+
+      /* Disclaimer Alert Box */
+      .disclaimer-box {
+        background-color: var(--warning-bg);
+        border: 1px solid var(--warning-border);
+        border-radius: 12px;
+        padding: 16px;
+        margin-bottom: 24px;
+        font-size: 13.5px;
+      }
+
+      .disclaimer-title {
+        font-weight: 600;
+        color: var(--warning-text);
+        margin-bottom: 6px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .disclaimer-text {
+        margin: 0;
+        color: var(--text-primary);
+      }
+
+      .info-card {
+        background: var(--bg-color);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 16px;
+        margin-top: 16px;
+      }
+
+      .footer {
+        margin-top: 32px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border-color);
+        text-align: center;
+        font-size: 13px;
+        color: var(--text-secondary);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <img src="../icons/icon48.png" alt="Iffy‑Checker Logo" class="logo" />
+        <div>
+          <h1>Iffy‑Checker</h1>
+          <p style="margin: 4px 0 0 0; font-size: 13px; color: var(--text-secondary);">Verzija 1.0.0 • Autor: Matija Gračanin</p>
+        </div>
+      </header>
+
+      <!-- Disclaimer Alert Box -->
+      <div class="disclaimer-box">
+        <div class="disclaimer-title">
+          <svg style="width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2;" viewBox="0 0 24 24">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+            <line x1="12" y1="9" x2="12" y2="13"/>
+            <line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>
+          Važna napomena (Odricanje odgovornosti)
+        </div>
+        <p class="disclaimer-text">
+          Ovo proširenje je <strong>neslužbeni projekt</strong>. Autor proširenja (<strong>Matija Gračanin</strong>) nije povezan s CARNET-om niti s Nacionalnim CERT-om. 
+          Dodatak je razvijen kako bi se korisnicima olakšala i potpuno automatizirala provjera web stranica tijekom pregledavanja oslanjajući se na servis CERT iffy.
+        </p>
+      </div>
+
+      <p>
+        <strong>Iffy‑Checker</strong> je proširenje otvorenog koda za preglednik Google Chrome (i druge Chromium preglednike) koje omogućuje automatsku 
+        provjeru je li otvorena web stranica zapravo lažna internetska trgovina pretražujući servis CERT iffy.
+      </p>
+
+      <h2>Kako funkcionira</h2>
+      <ol>
+        <li><strong>Automatska pozadinska provjera</strong>: Tijekom surfanja proširenje šalje domenu aktivne web stranice na provjeru.</li>
+        <li><strong>Brza signalizacija (Badge)</strong>: Ikona proširenja u kutu preglednika mijenja boju kako bi upozorila (zeleno <strong>OK</strong> za provjerene/sigurne stranice, crveno <strong>WRN</strong> za sumnjive trgovine).</li>
+        <li><strong>Jednostavno upravljanje</strong>: Otvaranjem skočnog prozora proširenja (popup), moguće je ručno testirati bilo koju domenu, dodati povjerljive adrese na popis dopuštenih (Whitelist) ili pratiti statistiku.</li>
+      </ol>
+
+      <h2>O CERT Iffy servisu</h2>
+      <p>
+        Za dohvat podataka o sigurnosti trgovina proširenje koristi se javni servis 
+        <a href="https://iffy.cert.hr/" target="_blank" rel="noopener">iffy.cert.hr</a>.
+      </p>
+      
+      <div class="info-card">
+        <p style="font-style: italic; font-size: 13.5px; margin: 0; color: var(--text-secondary);">
+          "CERT iffy je servis za provjeru internetskih trgovina koji je razvio CARNET-ov sektor Nacionalni CERT. 
+          U sklopu vlastitog istraživanja, Nacionalni CERT je ustanovio da postoji više od 6000 lažnih internetskih trgovina koje ciljaju građane Republike Hrvatske. 
+          Lažne internetske trgovine najčešće imitiraju poznate modne brendove, a kreirane su s ciljem krađe osobnih podataka i novca građana. 
+          Iz razloga što građani učestalo prijavljuju lažne internetske trgovine, CARNET-ov sektor Nacionalni CERT odlučio je napraviti CERT iffy, servis pomoću kojeg građani mogu jednostavno provjeriti internetsku trgovinu prije nego naruče proizvod putem iste."
+        </p>
+      </div>
+
+      <h2>Privatnost podataka</h2>
+      <p>
+        Privatnost podataka je prioritet. Proširenje šalje isključivo nazive domena (npr. <code>google.com</code>) izravno na poslužitelj https://iffy.cert.hr/
+        radi provjere statusa. Ne prikupljaju se niti spremaju bilo kakvi osobni podaci, kolačići ili povijest pretraživanja.
+        Izvorni kod je u potpunosti dostupan za pregled na <a href="https://github.com/mgracanin/iffy-checker" target="_blank" rel="noopener">GitHubu</a>.
+      </p>
+
+      <div class="footer">
+        Made by <a href="mailto:matijag@gmail.com">Matija Gračanin</a> • Sigurniji web za sve.
+      </div>
+    </div>
+  </body>
+</html>
