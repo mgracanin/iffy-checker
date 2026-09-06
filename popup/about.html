@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>O projektu – Iffy‑Checker</title>
+    <title>O projektu Iffy-Checker</title>
     <style>
       :root {
         --bg-color: #f8f9fa;
@@ -383,8 +383,8 @@
           Važna pravna napomena (Odricanje odgovornosti)
         </div>
         <p class="disclaimer-text">
-          Ovo proširenje je <strong>nezavisan projekt otvorenog koda</strong>. Autor proširenja (<strong>Matija Gračanin</strong>) nije službeno povezan s CARNET-om niti s Nacionalnim CERT-om. 
-          Dodatak je razvijen pro bono kako bi građanima i potrošačima omogućio bržu, automatiziranu i jednostavnu provjeru web trgovina u stvarnom vremenu oslanjajući se na javno dostupan servis CERT iffy.
+          Ovo proširenje je <strong>neovisan projekt otvorenog koda</strong>. Autor proširenja (<strong>Matija Gračanin</strong>) nije službeno povezan s CARNET-om niti s Nacionalnim CERT-om. 
+          Proširenje je razvijeno besplatno kako bi korisnicima omogućilo jednostavniju i bržu provjeru internetskih trgovina korištenjem javno dostupnog servisa CERT iffy.
         </p>
       </div>
 
@@ -398,9 +398,7 @@
         O projektu
       </h2>
       <p>
-        <strong>Iffy‑Checker</strong> je lagano i sigurno proširenje za preglednike temeljene na Chromiumu (Google Chrome, Brave, Microsoft Edge, Opera). 
-        Tijekom pretraživanja weba automatski analizira domene posjećenih stranica te uspoređuje njihovu reputaciju s bazom podataka Nacionalnog CERT-a, 
-        upozoravajući korisnike prije nego unesu osjetljive podatke ili podatke s bankovnih kartica na lažnim trgovinama.
+        <strong>Iffy-Checker</strong> je proširenje za preglednike temeljene na Chromiumu, kao što su Google Chrome, Brave, Microsoft Edge i Opera. Tijekom pregledavanja weba automatski provjerava domene posjećenih stranica putem servisa CERT iffy i upozorava korisnika ako je domena označena kao sumnjiva ili lažna internetska trgovina.
       </p>
 
       <!-- Key Capabilities -->
@@ -410,10 +408,10 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 22C17.5 19.1 19 14.5 19 9.5V5L12 2L5 5V9.5C5 14.5 6.5 19.1 12 22Z"/>
             </svg>
-            Automatska pozadinska zaštita
+            Automatska provjera u pozadini
           </div>
           <p class="feature-desc">
-            Tiho skenira aktivne web adrese tijekom surfanja bez ometanja i trenutno signalizira status na ikoni preglednika.
+            Automatski provjerava domenu otvorene stranice i status prikazuje na ikoni proširenja, bez potrebe za ručnim pokretanjem provjere.
           </p>
         </div>
 
@@ -425,7 +423,7 @@
             Popis pouzdanih domena (Whitelist)
           </div>
           <p class="feature-desc">
-            Jednim klikom možete označiti omiljene provjerene trgovine i banke kao povjerljive, uz automatsku sinkronizaciju poddomena.
+            Trgovine, banke i druge domene kojima vjerujete možete dodati na vlastiti popis pouzdanih domena. Pravilo se primjenjuje i na njihove poddomene.
           </p>
         </div>
 
@@ -438,7 +436,7 @@
             Ručna provjera i desni klik
           </div>
           <p class="feature-desc">
-            Testirajte bilo koji link ili domenu prije nego je uopće otvorite putem skočnog izbornika ili desnim klikom miša.
+            Bilo koju domenu ili poveznicu možete provjeriti prije otvaranja, iz skočnog prozora proširenja ili kontekstnog izbornika koji se otvara desnim klikom.
           </p>
         </div>
 
@@ -450,7 +448,7 @@
             Lokalna povijest i statistika
           </div>
           <p class="feature-desc">
-            Pratite broj pregledanih i provjerenih adresa. Svi podaci spremaju se isključivo lokalno na vašem uređaju.
+            Proširenje vodi evidenciju provjera i prikazuje osnovnu statistiku korištenja. Ti se podaci pohranjuju isključivo na vašem uređaju.
           </p>
         </div>
       </div>
@@ -461,13 +459,13 @@
           <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
           <line x1="7" y1="7" x2="7.01" y2="7"/>
         </svg>
-        Značenje oznaka (Badge statusi)
+        Značenje oznaka
       </h2>
       <div class="badge-legend">
         <div class="badge-row">
           <span class="badge-pill safe">OK</span>
           <div class="badge-info">
-            <strong>Sigurna stranica</strong>
+            <strong>Nema upozorenja</strong>
             <span class="badge-sub">Domena nije identificirana kao lažna internetska trgovina u bazi CERT iffy.</span>
           </div>
         </div>
@@ -476,7 +474,7 @@
           <span class="badge-pill warning">WRN</span>
           <div class="badge-info">
             <strong>Upozorenje: Lažna ili sumnjiva trgovina!</strong>
-            <span class="badge-sub">Domena se nalazi na popisu opasnih ili prevarantskih trgovina. Izbjegavajte unos osobnih i kartičnih podataka.</span>
+            <span class="badge-sub">Domena je u servisu CERT iffy označena kao sumnjiva ili lažna internetska trgovina. Ne preporučuje se unos osobnih ni kartičnih podataka.</span>
           </div>
         </div>
 
@@ -484,7 +482,7 @@
           <span class="badge-pill whitelist">WHT</span>
           <div class="badge-info">
             <strong>Dopuštena domena</strong>
-            <span class="badge-sub">Domena se nalazi na vašem korisničkom popisu povjerljivih adresa.</span>
+            <span class="badge-sub">Domenu ste sami dodali na popis pouzdanih domena.</span>
           </div>
         </div>
 
@@ -492,7 +490,7 @@
           <span class="badge-pill error">ERR</span>
           <div class="badge-info">
             <strong>Pogreška ili nedostupan poslužitelj</strong>
-            <span class="badge-sub">Došlo je do privremenog problema pri povezivanju sa servisom ili je upisan nevažeći URL.</span>
+            <span class="badge-sub">Servis trenutačno nije dostupan ili unesena adresa nije valjana.</span>
           </div>
         </div>
       </div>
@@ -506,7 +504,7 @@
         O Nacionalnom CERT-u i servisu CERT iffy
       </h2>
       <p>
-        Za pouzdanu provjeru vjerodostojnosti trgovina proširenje se oslanja na podatke javnog servisa 
+        Za provjeru internetskih trgovina proširenje koristi podatke javno dostupnog servisa
         <a href="https://iffy.cert.hr/" target="_blank" rel="noopener">iffy.cert.hr</a>.
       </p>
       
@@ -529,19 +527,19 @@
         Privatnost podataka i sigurnost
       </h2>
       <p>
-        Vaša privatnost je apsolutni prioritet u dizajnu proširenja:
+        Iffy-Checker je osmišljen tako da servisu za provjeru šalje samo podatke potrebne za provjeru domene:
       </p>
       <ul class="changelog-list">
-        <li><strong>Zaštita privatnosti URL-ova:</strong> Proširenje na provjeru šalje <em>isključivo</em> naziv domene (npr. <code>trgovina.hr</code>). Putanje podstranica, parametri pretraživanja, osobni identifikatori i tokeni sesija se uklanjaju i nikada ne napuštaju vaše računalo.</li>
-        <li><strong>Nema praćenja:</strong> Ne prikupljaju se niti prenose nikakvi osobni podaci, kolačići preglednika, IP adrese ili analitika trećih strana.</li>
-        <li><strong>Pametno predmemoriranje:</strong> Kako bi se smanjio mrežni promet i sačuvali poslužitelji CERT-a, rezultati provjere čuvaju se u privremenoj radnoj memoriji 10 minuta.</li>
-        <li><strong>Minimalne dozvole (Manifest V3):</strong> Proširenje zahtijeva isključivo osnovne dozvole preglednika (<code>tabs</code>, <code>storage</code>, <code>contextMenus</code>) potrebne za detekciju adrese i prikaz statusa.</li>
+        <li><strong>Provjerava se samo domena:</strong> servisu CERT iffy šalje se <em>isključivo</em> naziv domene, primjerice <code>trgovina.hr</code>. Putanje podstranica, parametri URL-a, identifikatori i tokeni sesije uklanjaju se prije provjere.  </li>
+        <li><strong>Bez praćenja korisnika:</strong> proširenje ne prikuplja osobne podatke ni kolačiće preglednika te ne koristi sustave za analitiku trećih strana.</li>
+        <li><strong>Privremena pohrana rezultata:</strong> rezultati provjera čuvaju se deset minuta kako bi se izbjeglo nepotrebno ponavljanje zahtjeva i smanjilo opterećenje servisa CERT iffy.</li>
+        <li><strong>Ograničen skup dozvola (Manifest V3):</strong> proširenje koristi dozvole <code>tabs</code>, <code>storage</code>, <code>contextMenus</code> potrebne za provjeru aktivne stranice, lokalnu pohranu postavki i rad kontekstnog izbornika.</li>
       </ul>
 
       <!-- Footer -->
       <footer class="footer">
         <div>
-          Razvio <a href="mailto:matijag@gmail.com">Matija Gračanin</a> • Za sigurniji internet.
+          Razvijeno s ❤️ <a href="mailto:matijag@gmail.com">Matija Gračanin</a> • Za sigurniji internet.
         </div>
         <div class="footer-links">
           <a href="https://github.com/mgracanin/iffy-checker" target="_blank" rel="noopener">GitHub Repozitorij</a>
