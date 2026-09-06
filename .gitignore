@@ -13,3 +13,6 @@ payload.json
 # IDE & Editor folders
 .vscode/
 .idea/
+
+# Distribution archives
+*.zip
